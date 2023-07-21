@@ -86,7 +86,7 @@ section .cards .text-card-1{
 	padding: 4vh;
 }
 
-@media (max-width: 900px){
+@media (max-width: 1400px){
 	section .cards{
 		flex-direction:column;
 	}
