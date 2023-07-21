@@ -58,71 +58,74 @@
 			packages=["matplotlib", "numpy", "pandas"]
 		</py-config>
 		<py-script>
-				import numpy as np
-	import matplotlib as mpl
-	import matplotlib.pyplot as plt
-	import pandas as pd
+			import numpy as np
+			import matplotlib as mpl
+			import matplotlib.pyplot as plt
+			import pandas as pd
 
-	font = {'family' : 'DejaVu Sans',
-		'weight' : 'normal',
-		'size'   : 14}
-	mpl.rc('font', **font)
+			font = {'family' : 'DejaVu Sans',
+				'weight' : 'normal',
+				'size'   : 14}
 
-	plt.rcParams.update({
-    "figure.facecolor":  (0.0, 0.0, 0.0, 0.0),  # red   with alpha = 30%
-    "axes.facecolor":    (0.0, 0.0, 0.0, 0.0),  # green with alpha = 50%
-    "savefig.facecolor": (0.0, 0.0, 1.0, 0.0),  # blue  with alpha = 20%
-	})
+			mpl.rc('font', **font)
 
-	colors=['#436397', '#3774a3', '#3084ab', '#3394b0', '#43a3b2', '#59b2b3', '#73bfb4', '#8eccb4', '#aad9b7', '#c7e5bc', '#e3f0c4', '#fffbd0']
+			plt.rcParams.update({
+				"figure.facecolor":  (0.0, 0.0, 0.0, 0.0),  # red   with alpha = 30%
+    			"axes.facecolor":    (0.0, 0.0, 0.0, 0.0),  # green with alpha = 50%
+    			"savefig.facecolor": (0.0, 0.0, 1.0, 0.0),  # blue  with alpha = 20%
+				})
+
+			colors=['#436397', '#3774a3', '#3084ab', '#3394b0', '#43a3b2', '#59b2b3', '#73bfb4', '#8eccb4', '#aad9b7', '#c7e5bc', '#e3f0c4', '#fffbd0']
         
-	x=[1926,1937,1951,1961,1966,1971,1981,1991,2001,2011,2021]
-	y=[1256561,1279745,1370921,1425042,1484775,1527593,1488077,1569971,1685267,1810863,1903175]
+			x=[1926,1937,1951,1961,1966,1971,1981,1991,2001,2011,2021]
+			y=[1256561,1279745,1370921,1425042,1484775,1527593,1488077,1569971,1685267,1810863,1903175]
 
-	df=pd.DataFrame({'Census Year': x, 'Population': y})
+			df=pd.DataFrame({'Census Year': x, 'Population': y})
 
-	fs_title=20
-	fs_axis_title=16
-	fs_axis_ticks=14
+			fs_title=20
+			fs_axis_title=16
+			fs_axis_ticks=14
 
-	fig, ax = plt.subplots(figsize=(8, 5))
+			fig, ax = plt.subplots(figsize=(8, 5))
 
-	pl1 = plt.errorbar(df['Census Year'],df['Population'], fmt='.',color=colors[0],markersize=15)
-	pl2 = plt.plot(df['Census Year'],df['Population'],linestyle='solid',color=colors[0])
+			pl1 = plt.errorbar(df['Census Year'],df['Population'], fmt='.',color=colors[0],markersize=15)
+			pl2 = plt.plot(df['Census Year'],df['Population'],linestyle='solid',color=colors[0])
 
-	ax.set_title('Population of Northern Ireland', fontsize=fs_title, fontweight='bold', pad=20, loc='left', color=colors[0])
+			ax.set_title('Population of Northern Ireland', fontsize=fs_title, fontweight='bold', pad=20, loc='left', color=colors[0])
 
-	major_ticks_x = np.arange(1920,2040,10)
-	minor_ticks_x = np.arange(1920,2040,1)
+			major_ticks_x = np.arange(1920,2040,10)
+			minor_ticks_x = np.arange(1920,2040,1)
 
-	ax.set_xticks(major_ticks_x,color='darkgrey')
-	ax.set_xticks(minor_ticks_x, minor=True)
+			ax.set_xticks(major_ticks_x,color='darkgrey')
+			ax.set_xticks(minor_ticks_x, minor=True)
 
-	ax.set_xlim([1920,2030])
-	ax.set_ylim([1000000,2200000])
+			ax.set_xlim([1920,2030])
+			ax.set_ylim([1000000,2200000])
 
-	plt.xticks(rotation=45,ha='right', rotation_mode="anchor")
+			plt.xticks(rotation=45,ha='right', rotation_mode="anchor")
 
-	for i in range(0,len(df['Population'])):
-		if (i==0) or (i==(len(df['Population'])-1)):
-			ax.annotate("{:,}".format(df['Population'][i]), xy=(df["Census Year"][i]-3, df['Population'][i]+100000), fontsize=fs_axis_ticks)
+			for i in range(0,len(df['Population'])):
+				if (i==0) or (i==(len(df['Population'])-1)):
+					ax.annotate("{:,}".format(df['Population'][i]), xy=(df["Census Year"][i]-3, df['Population'][i]+100000), fontsize=fs_axis_ticks)
 	
-	right_side = ax.spines["right"]
-	top_side = ax.spines["top"]
-	left_side = ax.spines["left"]
-	bottom_side=ax.spines["bottom"]
-	right_side.set_visible(False)
-	top_side.set_visible(False)
-	left_side.set_visible(False)
+			right_side = ax.spines["right"]
+			top_side = ax.spines["top"]
+			left_side = ax.spines["left"]
+			bottom_side=ax.spines["bottom"]
+			right_side.set_visible(False)
+			top_side.set_visible(False)
+			left_side.set_visible(False)
 
-	plt.tick_params(left = False, labelleft = False)
-	plt.text(1920, 2120000, 'Figure showing the growth of the population as measured\nby Census results between 1926 and 2021', fontsize = fs_axis_title, color=colors[1])
-	plt.plot()
+			plt.tick_params(left = False, labelleft = False)
+			plt.text(1920, 2120000, 'Figure showing the growth of the population as measured\nby Census results between 1926 and 2021', fontsize = fs_axis_title, color=colors[1])
+			plt.plot()
 
 			display(fig, target="graph-area")
 
 		</py-script>
 	</body>
 	</html>
+
+
 
 
