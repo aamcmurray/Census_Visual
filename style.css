@@ -67,11 +67,6 @@ section .cards{
 	display: flex;
 }
 
-section .graph-contain{
-	margin: auto;
-	width: 50vw;
-}
-
 section .cards .text-card{
 	border-radius: 1vh;
 	background: #1D212B;
